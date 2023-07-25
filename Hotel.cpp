@@ -3,21 +3,21 @@
 struct Cliente {
 	int Cedula;
 	char nombres[30];
-	char apellidoP[20];
-	char apellidoM[20];
+	char apellido[20];
 	int habitacion;
-	bool desayuno;
-	bool tdc;
 	Cliente *siguiente;
 	Cliente *anterior; 
 }*primero,*ultimo;
 
 
 
-void insertar(int numeroCedula){
+void insertar(int numeroCedula, char nombres[], char apellido[], int numeroDeHabitacion){
 	
 	Cliente *NuevoCliente = new Cliente;
 	NuevoCliente->Cedula = numeroCedula;
+	NuevoCliente->nombres = nombres;
+	NuevoCliente->apellido = apellido;
+	NuevoCliente->habitacion = numeroDeHabitacion;
 	
 	if(primero==NULL){
 		primero = NuevoCliente;
@@ -48,16 +48,31 @@ void mostrar(){
 
 void mostrarPrimero(){
 	cout<<"primero"<<primero->Cedula;
+	cout<<"primero"<<primero->nombres;
+	cout<<"primero"<<primero->apellido;
+}
+
+void RegistrarNuevoCliente(){
+	int Cedula;
+	char nombres[30];
+	char apellido[20];
+	int habitacion;
+	
+	cout<<"porfavor ingrese el nombre del Cliente"<<endl;
+	cin.getline(nombres,30,"\n");
+
+	cout<<"porfavor ingrese los apellidos del Cliente"<<endl;
+	cin.getline(apellido,20,"\n");
+	
+	cout<<"porfavor ingrese el numero de habitacion para el cliente"<<endl;
+	cin>>habitacion;
+	
+			
 }
 
 int main(){
-	
-	insertar(30);
-	insertar(70);
-	insertar(23);
-	insertar(33);
-	insertar(12);
 
+	RegistrarNuevoCliente();
 	mostrarPrimero();
 
 	
