@@ -25,7 +25,7 @@ void insertar(int numeroCedula, char nombres[], char apellido[], int numeroDeHab
 		ultimo = NuevoCliente;
 	}else{
 		ultimo->siguiente = NuevoCliente;
-		NuevoCliente->siguiente;
+		NuevoCliente->siguiente = primero;
 		ultimo = NuevoCliente;
 	}
 	
