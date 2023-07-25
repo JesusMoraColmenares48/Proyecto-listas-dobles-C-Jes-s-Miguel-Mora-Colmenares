@@ -43,6 +43,24 @@ void mostrar(){
 	}
 }
 
+void buscarHaciaAdelante(){
+	Cliente *clienteActual = new Cliente;
+	clienteActual = primero;	
+	int cedulaBuscada;
+	cout<<"ingrese una cedula "<<endl;
+	cin>>cedulaBuscada;
+	if(primero!=NULL){
+		do{
+			cout<<clienteActual->nombres<<endl;
+			if(clienteActual->Cedula==cedulaBuscada){
+				cout<<"el ultimo cliente que se imprimio es el titular de la cedula: "<<cedulaBuscada<<endl;
+				break;	
+			}
+			clienteActual = clienteActual->siguiente;
+		}while(clienteActual!=primero);		
+	}
+}
+
 void mostrarPrimero(){
 	cout<<"primero "<<primero->nombres;
 }
@@ -67,10 +85,16 @@ void RegistrarNuevoCliente(){
 	insertar(Cedula,nombres,apellido,habitacion);		
 }
 
+void
+
 int main(){
 
 	RegistrarNuevoCliente();
-	mostrar();
+	cin.ignore();
+	RegistrarNuevoCliente();
+	cin.ignore();
+	RegistrarNuevoCliente();
+	buscar();
 
 
 	
