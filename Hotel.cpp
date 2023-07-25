@@ -16,6 +16,7 @@ void insertar(int numeroCedula, char nombres[], char apellido[], int numeroDeHab
 	Cliente *NuevoCliente = new Cliente;
 	NuevoCliente->Cedula = numeroCedula;
 	NuevoCliente->nombres = nombres;
+	
 	NuevoCliente->apellido = apellido;
 	NuevoCliente->habitacion = numeroDeHabitacion;
 	
