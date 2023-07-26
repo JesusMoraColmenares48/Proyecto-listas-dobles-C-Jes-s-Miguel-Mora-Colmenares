@@ -101,7 +101,34 @@ void RegistrarNuevoCliente(){
 }
 
 void eliminarCliente(){
-	
+	Cliente *clienteActual = new Cliente;
+	clienteActual = primero;	
+	int cedulaBuscada;
+	cout<<"ingrese la cedula del cliente que quiere eliminar "<<endl;
+	cin>>cedulaBuscada;
+	if(primero!=NULL){
+		do{
+			
+			if(clienteActual->Cedula==cedulaBuscada){
+				if(clienteActual == primero){
+					primero = clienteActual.siguiente;
+					ultimo->siguiente = primero;
+				}else if(clienteActual == ultimo){
+					ultimo = clienteActual->anterior;
+					ultimo->siguiente = primero;
+				}else{
+					Cliente *clienteAnterior = new Cliente;
+					clienteAnterior = clienteActual->anterior;
+					clienteActual = clienteActual->siguiente;
+					clienteActual->anterior = clienteAnterior;
+				}
+				
+				cout<<"Cliente eliminado compadre"<<endl;
+			}
+			
+			clienteActual = clienteActual->siguiente;
+		}while(clienteActual!=primero);		
+	}
 }
 
 int main(){
@@ -112,7 +139,7 @@ int main(){
 	cin.ignore();
 	RegistrarNuevoCliente();
 	cout<<endl;
-
+	
 	
 	return 0;
 }
