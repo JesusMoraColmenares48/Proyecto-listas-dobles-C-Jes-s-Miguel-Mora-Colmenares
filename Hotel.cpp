@@ -111,7 +111,7 @@ void eliminarCliente(){
 			
 			if(clienteActual->Cedula==cedulaBuscada){
 				if(clienteActual == primero){
-					primero = clienteActual.siguiente;
+					primero = clienteActual->siguiente;
 					ultimo->siguiente = primero;
 				}else if(clienteActual == ultimo){
 					ultimo = clienteActual->anterior;
@@ -121,13 +121,15 @@ void eliminarCliente(){
 					clienteAnterior = clienteActual->anterior;
 					clienteActual = clienteActual->siguiente;
 					clienteActual->anterior = clienteAnterior;
+					clienteAnterior->siguiente = clienteActual;
 				}
-				
 				cout<<"Cliente eliminado compadre"<<endl;
 			}
 			
 			clienteActual = clienteActual->siguiente;
-		}while(clienteActual!=primero);		
+		}while(clienteActual!=primero);	
+		
+		mostrarDelPrimeroAlUltimo();	
 	}
 }
 
@@ -138,8 +140,13 @@ int main(){
 	RegistrarNuevoCliente();
 	cin.ignore();
 	RegistrarNuevoCliente();
+	cin.ignore();
+	RegistrarNuevoCliente();
+	cin.ignore();
+	RegistrarNuevoCliente();
+	cin.ignore();
 	cout<<endl;
-	
+	eliminarCliente();
 	
 	return 0;
 }
