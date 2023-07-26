@@ -26,13 +26,27 @@ void insertar(int numeroCedula, char nombres[], char apellido[], int numeroDeHab
 	}else{
 		ultimo->siguiente = NuevoCliente;
 		NuevoCliente->siguiente = primero;
+		NuevoCliente->anterior = ultimo;
 		ultimo = NuevoCliente;
 	}
 	
 }
 
 
-void mostrar(){
+void mostrarDelUltimoAlPrimero(){
+	Cliente *clienteActual = new Cliente;
+	clienteActual = ultimo;	
+	if(clienteActual->anterior!=NULL){
+		do{
+			cout<<clienteActual->nombres<<endl;
+			clienteActual = clienteActual->anterior;
+		}while(clienteActual!=primero);
+		cout<<clienteActual->nombres<<endl;
+	}
+}
+
+
+void mostrarDelPrimeroAlUltimo(){
 	Cliente *clienteActual = new Cliente;
 	clienteActual = primero;	
 	if(primero!=NULL){
@@ -40,6 +54,7 @@ void mostrar(){
 			cout<<clienteActual->nombres<<endl;
 			clienteActual = clienteActual->siguiente;
 		}while(clienteActual!=primero);
+		
 	}
 }
 
@@ -85,7 +100,9 @@ void RegistrarNuevoCliente(){
 	insertar(Cedula,nombres,apellido,habitacion);		
 }
 
-void
+void eliminarCliente(){
+	
+}
 
 int main(){
 
@@ -94,8 +111,7 @@ int main(){
 	RegistrarNuevoCliente();
 	cin.ignore();
 	RegistrarNuevoCliente();
-	buscar();
-
+	cout<<endl;
 
 	
 	return 0;
