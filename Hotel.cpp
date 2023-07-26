@@ -1,5 +1,6 @@
-#include "funciones.cpp"
-
+#include <iostream>
+#include <string.h>
+using namespace std;
 struct Cliente {
 	int Cedula;
 	char nombres[30];
