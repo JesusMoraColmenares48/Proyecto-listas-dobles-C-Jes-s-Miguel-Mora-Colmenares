@@ -193,17 +193,6 @@ int main(){
 
 	cargarHabitaciones();
 	RegistrarNuevoCliente();
-	cin.ignore();
-	RegistrarNuevoCliente();
-	cin.ignore();
-	RegistrarNuevoCliente();
-	cin.ignore();
-	RegistrarNuevoCliente();
-	cin.ignore();
-	RegistrarNuevoCliente();
-	cin.ignore();
-	cout<<endl;
-	eliminarCliente();
-	
+	mostrarHabitaciones();	
 	return 0;
 }
