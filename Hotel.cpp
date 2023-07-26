@@ -9,7 +9,10 @@ struct Cliente {
 	Cliente *anterior; 
 }*primero,*ultimo;
 
-
+struct Habitacion{
+	int numeroHabitacion;
+	bool ocupada = false;
+}habitacion[30];
 
 void insertar(int numeroCedula, char nombres[], char apellido[], int numeroDeHabitacion){
 	
@@ -80,6 +83,46 @@ void mostrarPrimero(){
 	cout<<"primero "<<primero->nombres;
 }
 
+void cargarHabitaciones(){
+	for(int i=0;i<30;i++){
+		habitacion[i].numeroHabitacion = i + 1;
+	}
+}
+
+void mostrarHabitaciones(){
+	for(int i=0;i<30;i++){
+		cout<<"la habitacion "<<habitacion[i].numeroHabitacion;
+		if(!habitacion[i].ocupada){
+			cout<<" esta desocupada";
+		}else{
+			cout<<" esta ocupada";
+		}
+		cout<<endl;
+	}	
+}
+
+bool HabitacionDisponible(int numeroDeHabitacionBuscada){
+	bool disponible = false;
+	for(int i=0;i<30;i++){
+		if(habitacion[i].numeroHabitacion==numeroDeHabitacionBuscada && !habitacion[i].ocupada){
+			
+			disponible = true;
+		}
+	}
+	if(disponible){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+void ocuparHabitacion(int numeroDeHabitacion){
+	for(int i=0;i<30;i++){
+		if(habitacion[i].numeroHabitacion==numeroDeHabitacion){
+			habitacion[i].ocupada = true;
+		}
+	}
+}
 void RegistrarNuevoCliente(){
 	int Cedula;
 	char nombres[30];
@@ -93,9 +136,22 @@ void RegistrarNuevoCliente(){
 	
 	cout<<"porfavor ingrese la cedula del cliente"<<endl;
 	cin>>Cedula;
-	
-	cout<<"porfavor ingrese el numero de habitacion para el cliente"<<endl;
-	cin>>habitacion;
+	do{
+		cout<<"porfavor ingrese el numero de habitacion para el cliente"<<endl;
+		cin>>habitacion;
+		if(!HabitacionDisponible(habitacion)&&habitacion<=30){
+			cout<<"**LA HABITACION YA SE ENCUENTRA OCUPADA**"<<endl;
+			cout<<"**ACONTINUACION SE IMPRIME LA LISTA DE HABITACIONES"<<endl;
+			cout<<"**INDICANDO CUALES ESTAN DESOCUPADAS**"<<endl;
+			mostrarHabitaciones();
+			cout<<"\n"<<endl;
+		}else if(habitacion>30){
+			cout<<"**DIGITASTE UN NUMERO DE HABITACION NO VALIDO"<<endl;
+			cout<<"**EL MAXIMO NUMERO DE LAS HABITACIONES ES 30**"<<endl;
+			cout<<"\n"<<endl;
+		}				
+	}while(!HabitacionDisponible(habitacion)||habitacion>30);
+	ocuparHabitacion(habitacion);
 	
 	insertar(Cedula,nombres,apellido,habitacion);		
 }
@@ -135,6 +191,7 @@ void eliminarCliente(){
 
 int main(){
 
+	cargarHabitaciones();
 	RegistrarNuevoCliente();
 	cin.ignore();
 	RegistrarNuevoCliente();
