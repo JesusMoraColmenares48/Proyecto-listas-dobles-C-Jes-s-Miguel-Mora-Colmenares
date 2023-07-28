@@ -1,6 +1,6 @@
 #include "Cliente.cpp"
 #include "Hotel.cpp"
-#include <bits/types/error_t.h>
+//#include <bits/types/error_t.h>
 #include <system_error>
 
 bool validateInput(){
@@ -16,7 +16,7 @@ bool validateInput(){
 }
 void eliminar(){
 	int cedulaBuscada;
-	cout<<"ingrese la cedula del cliente que quiere eliminar "<<endl;
+	cout<<"ingrese la cedula del cliente que quiere eliminar: ";
 	cin>>cedulaBuscada;
 	Cliente* cliente = eliminarCliente(cedulaBuscada);
 	int numeroHabitacion=cliente->habitacion;
@@ -48,9 +48,11 @@ void registrarNuevoCliente(){
 		} while(!cin.good());
 
 		if(!habitacionDisponible(habitacion)&&habitacion<=30){
+			cout<<endl;
 			cout<<"**LA HABITACION YA SE ENCUENTRA OCUPADA**"<<endl;
 			cout<<"**ACONTINUACION SE IMPRIME LA LISTA DE HABITACIONES"<<endl;
 			cout<<"**INDICANDO CUALES ESTAN DESOCUPADAS**"<<endl;
+			cout<<endl;
 			mostrarHabitaciones();
 			cout<<"\n"<<endl;
 		}else if(habitacion>30){
@@ -106,7 +108,7 @@ void editarCliente(){
 			desocuparHabitacion(cliente->habitacion);
 			ocuparHabitacion(nuevaHabitacion);
 			cliente->habitacion=nuevaHabitacion;
-			cout << "Cliente " << cliente->nombres <<" "<< cliente->apellido << " reasignado a la habitación número " << nuevaHabitacion << endl;
+			cout << "Cliente " << cliente->nombres <<" "<< cliente->apellido << " reasignado a la habitaciÃ³n nÃºmero " << nuevaHabitacion << endl;
 
 			break;
 	}
