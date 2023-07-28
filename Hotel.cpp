@@ -15,6 +15,9 @@ void cargarHabitaciones(){
 }
 
 void mostrarHabitaciones(){
+	cout << "#########################" << endl;
+	cout << "# Habitaciones ocupadas #" << endl;
+	cout << "#########################" << endl;
 	for(int i=0;i<30;i++){
 		cout<<"la habitacion "<<habitacion[i].numeroHabitacion;
 		if(!habitacion[i].ocupada){
@@ -48,7 +51,7 @@ void ocuparHabitacion(int numeroDeHabitacion){
 		}
 	}
 }
-void desocuparHabitacion(int numeroDeHabitacion){
+void desocuparHabitacion(int numeroDeHabitacion){;
 	for(int i=0;i<30;i++){
 		if(habitacion[i].numeroHabitacion==numeroDeHabitacion){
 			habitacion[i].ocupada = false;

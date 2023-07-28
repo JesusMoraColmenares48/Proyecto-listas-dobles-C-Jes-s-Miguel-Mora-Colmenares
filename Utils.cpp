@@ -1,6 +1,13 @@
 #include "Cliente.cpp"
 #include "Hotel.cpp"
 
+void invalidInput(){
+	cin.clear();
+	cin.ignore();
+	cout << "####################" << endl;
+	cout << "# Accion no valida #" << endl;
+	cout << "####################" << endl;
+}
 void eliminar(){
 	int cedulaBuscada;
 	cout<<"ingrese la cedula del cliente que quiere eliminar "<<endl;
@@ -9,22 +16,35 @@ void eliminar(){
 	int numeroHabitacion=cliente->habitacion;
 	desocuparHabitacion(numeroHabitacion);
 }
-void RegistrarNuevoCliente(){
+void registrarNuevoCliente(){
+	cin.ignore();
 	int Cedula;
 	char nombres[30];
 	char apellido[20];
 	int habitacion;
-	cout<<"porfavor ingrese el nombre del Cliente"<<endl;
+	cout<<"Por favor ingrese el nombre del Cliente: ";
 	cin.getline(nombres,30,'\n');
 
-	cout<<"porfavor ingrese los apellidos del Cliente"<<endl;
+	cout<<"Por favor ingrese los apellidos del Cliente: ";
 	cin.getline(apellido,20,'\n');
 	
-	cout<<"porfavor ingrese la cedula del cliente"<<endl;
-	cin>>Cedula;
 	do{
-		cout<<"porfavor ingrese el numero de habitacion para el cliente"<<endl;
-		cin>>habitacion;
+		if(!cin.good()){
+			invalidInput();
+		}
+		cout<<"Por favor ingrese la cedula del cliente: ";
+		cin>>Cedula;
+	} while(!cin.good());
+	do{
+
+		do{
+			if(!cin.good()){
+				invalidInput();
+			}
+			cout<<"Por favor ingrese el numero de habitacion para el cliente: ";
+			cin>>habitacion;
+		} while(!cin.good());
+
 		if(!HabitacionDisponible(habitacion)&&habitacion<=30){
 			cout<<"**LA HABITACION YA SE ENCUENTRA OCUPADA**"<<endl;
 			cout<<"**ACONTINUACION SE IMPRIME LA LISTA DE HABITACIONES"<<endl;
@@ -40,4 +60,20 @@ void RegistrarNuevoCliente(){
 	ocuparHabitacion(habitacion);
 	
 	insertar(Cedula,nombres,apellido,habitacion);		
+}
+
+void editarCliente(){
+	int cedulaCliente;
+	int nuevaHabitacion;
+
+	cout<<"Ingrese la cedula del cliente que quiere editar:"<<endl;
+	cin>>cedulaCliente;
+	cout << "ingrese la habitacion que desea asignar" << endl;
+	cin >> nuevaHabitacion;
+
+	Cliente* cliente = buscarHaciaAdelante(cedulaCliente);
+	desocuparHabitacion(cliente->habitacion);
+	ocuparHabitacion(nuevaHabitacion);
+	// mostrarHabitaciones();
+
 }
