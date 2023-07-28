@@ -104,13 +104,13 @@ Cliente* eliminarCliente(int cedulaBuscada){
 				}
 				
 				clienteEliminado = clienteActual;
-				cout<<"Cliente eliminado compadre"<<endl;
+				cout<<"*****CLIENTE ELIMINADO*****"<<endl;
 			}
 			
 			clienteActual = clienteActual->siguiente;
 		}while(clienteActual!=primero);	
 		
-		mostrarDelPrimeroAlUltimo();	
+			
 	}
 	return clienteEliminado;
 }
