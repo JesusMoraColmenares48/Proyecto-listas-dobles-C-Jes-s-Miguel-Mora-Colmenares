@@ -8,8 +8,10 @@ int main(){
 		cout << "Ingrese la accion que desea realizar:" << endl;
 		cout << "1. Registrar nuevo cliente." << endl;
 		cout << "2. Mostrar habitaciones ocupadas." << endl;
-		cout << "3. Reasignar habitación y editar cliente." << endl;
-		cout << "4. Eliminar cliente." << endl;
+		cout << "3. Reasignar habitacion y editar cliente." << endl;
+		cout << "4. Mostrar clientes del primero a ultimo." << endl;
+		cout << "5. Mostrar clientes del ultimo al primero." << endl;
+		cout << "6. Eliminar a un cliente." << endl;
 		cout << "Ingrese su opcion: ";
 		cin >> accion;
 		bool isInputValid = validateInput();
@@ -25,6 +27,12 @@ int main(){
 				editarCliente();
 				break;
 			case 4:
+				mostrarDelPrimeroAlUltimo();
+				break;	
+			case 5:
+				mostrarDelUltimoAlPrimero();
+				break;	
+			case 6:
 				eliminar();
 				break;
 			default:
@@ -35,12 +43,13 @@ int main(){
 			isInputValid = validateInput();
 			if(!isInputValid) continue;
 			cout << "----------------------------------------" << endl;
-			cout << "¿Desea seguir realizando operaciones?" << endl;
+			cout << "Â¿Desea seguir realizando operaciones?" << endl;
 			cout << "1. Si." << endl;
 			cout << "2. No." << endl;
 			cout << "Ingrese su opcion: ";
 			cin >> continuar;
 			cin.ignore();
+			cout<<endl;
 		}while(continuar!=1&&continuar!=2);
 	}
 	return 0;
