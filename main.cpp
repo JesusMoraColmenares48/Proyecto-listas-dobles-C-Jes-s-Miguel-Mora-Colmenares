@@ -12,10 +12,8 @@ int main(){
 		cout << "4. Eliminar cliente." << endl;
 		cout << "Ingrese su opcion: ";
 		cin >> accion;
-		if(!cin.good()){
-			invalidInput();
-			continue;
-		}
+		bool isInputValid = validateInput();
+		if(!isInputValid) continue;
 		switch(accion){
 			case 1:
 				registrarNuevoCliente();
@@ -34,10 +32,9 @@ int main(){
 				break;
 		}
 		do {
-			if(!cin.good()){
-				invalidInput();
-				continue;
-			}
+			isInputValid = validateInput();
+			if(!isInputValid) continue;
+			cout << "----------------------------------------" << endl;
 			cout << "¿Desea seguir realizando operaciones?" << endl;
 			cout << "1. Si." << endl;
 			cout << "2. No." << endl;

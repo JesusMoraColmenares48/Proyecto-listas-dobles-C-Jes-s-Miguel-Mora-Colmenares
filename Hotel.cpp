@@ -29,7 +29,7 @@ void mostrarHabitaciones(){
 	}	
 }
 
-bool HabitacionDisponible(int numeroDeHabitacionBuscada){
+bool habitacionDisponible(int numeroDeHabitacionBuscada){
 	bool disponible = false;
 	for(int i=0;i<30;i++){
 		if(habitacion[i].numeroHabitacion==numeroDeHabitacionBuscada && !habitacion[i].ocupada){

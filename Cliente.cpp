@@ -61,15 +61,18 @@ void mostrarDelPrimeroAlUltimo(){
 Cliente* buscarHaciaAdelante(int cedulaBuscada){
 	Cliente *clienteActual = new Cliente;
 	clienteActual = primero;	
+	bool encontrado = false;
 	if(primero!=NULL){
 		do{
-			cout<<clienteActual->nombres<<endl;
+			// cout<<clienteActual->nombres<<endl;
 			if(clienteActual->Cedula==cedulaBuscada){
-				cout<<"el ultimo cliente que se imprimio es el titular de la cedula: "<<cedulaBuscada<<endl;
+				// cout<<"el ultimo cliente que se imprimio es el titular de la cedula: "<<cedulaBuscada<<endl;
+				encontrado=true;
 				break;	
 			}
 			clienteActual = clienteActual->siguiente;
 		}while(clienteActual!=primero);		
+		if(!encontrado) return NULL;
 	}
 	return clienteActual;
 }
