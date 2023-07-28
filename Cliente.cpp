@@ -35,13 +35,20 @@ void insertar(int numeroCedula, char nombres[], char apellido[], int numeroDeHab
 
 void mostrarDelUltimoAlPrimero(){
 	Cliente *clienteActual = new Cliente;
-	clienteActual = ultimo;	
-	if(clienteActual->anterior!=NULL){
+	clienteActual = ultimo;
+		
+	if(ultimo!=NULL&&clienteActual->anterior!=NULL){
+		cout<<endl;
+		cout<<"LISTA DE CLIENTES:"<<endl;
 		do{
-			cout<<clienteActual->nombres<<endl;
+			cout<<clienteActual->nombres<<" | habitacion : "<<clienteActual->habitacion<<endl;
 			clienteActual = clienteActual->anterior;
 		}while(clienteActual!=primero);
-		cout<<clienteActual->nombres<<endl;
+		cout<<"Nombre: "<<clienteActual->nombres<<" | habitacion : "<<clienteActual->habitacion<<endl;;
+	}
+	
+	if(ultimo==NULL){
+		cout<<"*****NO HAY CLIENTES REGISTRADOS AUN*****"<<endl;
 	}
 }
 
@@ -50,11 +57,15 @@ void mostrarDelPrimeroAlUltimo(){
 	Cliente *clienteActual = new Cliente;
 	clienteActual = primero;	
 	if(primero!=NULL){
+		cout<<endl;
+		cout<<"LISTA DE CLIENTES:"<<endl;
 		do{
-			cout<<clienteActual->nombres<<endl;
+			cout<<"Nombre: "<<clienteActual->nombres<< " | habitacion : "<<clienteActual->habitacion<<endl;
 			clienteActual = clienteActual->siguiente;
 		}while(clienteActual!=primero);
 		
+	}else{
+		cout<<"*****NO HAY CLIENTES REGISTRADOS AUN*****"<<endl;
 	}
 }
 
